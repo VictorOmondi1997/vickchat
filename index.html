@@ -4,9 +4,86 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+    <link rel="stylesheet" href="style/w3.css">
+    <link rel="stylesheet" href="style/call.css">
+    <link rel="stylesheet" href="style/main.css">
     <title>VickChat</title>
 </head>
-<body>
-    
+<body class="w3-content w3-black" style="max-width: 1500px;">
+
+    <!--HEADER WITH SLIDE SHOW-->
+    <header class="w3-display-container w3-center">
+        <button class="w3-button w3-block w3-green w3-hide-large w3-hide-medium" onclick="document.getElementById('videoCall').style.display='block'">
+            <i class="fas fa-video"></i> Join Call
+        </button>
+        <div class="bg-slides w3-animate-opacity">
+            <img src="assets/vickchat-bg.gif" alt="Vick chat Background gif" class="w3-image" style="min-width: 500px;" width="1500" height="1000">
+            <div class="w3-display-left w3-padding w3-hide-hide-small" style="width:35%">
+                <div class="w3-black w3-opacity w3-hover-opacity-off w3-padding-large w3-round-large">
+                    <h1 class="w3-xlarge">
+                        Free video chat and meetings for everyone, everywhere.
+                    </h1>
+                    <hr class="w3-opacity">
+                    <p>
+                        Connect with your loved ones with our free video chart.
+                    </p>
+                    <p>
+                        <button class="w3-button w3-block w3-green w3-round" onclick="document.getElementById('videoCall').style.display='block'">
+                            <i class="fas fa-video"></i> Join Call
+                        </button>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="bg-slides w3-animate-opacity">
+            <img src="assets/vickchat-bg-2.gif" alt="Vick chat Background gif2" class="w3-image" style="min-width: 500px;" width="1500" height="1000">
+            <div class="w3-display-left w3-padding w3-hide-hide-small" style="width:35%">
+                <div class="w3-black w3-opacity w3-hover-opacity-off w3-padding-large w3-round-large">
+                    <h1 class="w3-xlarge">
+                        FREEEE!!!!! Fast and Secure
+                    </h1>
+                    <hr class="w3-opacity">
+                    <p>
+                        Connect with your loved ones with our free video chart.
+                    </p>
+                    <p>
+                        <button class="w3-button w3-block w3-green w3-round" onclick="document.getElementById('videoCall').style.display='block'">
+                            <i class="fas fa-video"></i> Join Call
+                        </button>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <a href="" class="w3-button w3-black w3-display-right w3-margin-right w3-round w3-hide-small w3-hover-light-grey" onclick="nextSlide(1)">
+            See More <i class="fas fa-angle-right"></i>
+        </a>
+        <a href="" class="w3-button w3-block w3-black w3-round w3-hide-large w3-hide-medium" onclick="nextSlide(1)">
+            See More <i class="fas fa-angle-right"></i>
+        </a>
+    </header>
+
+    <!--JOIN VIDEO POP-->
+    <div id="videoCall" class="w3-modal w3-animate-opacity">
+        <div class="w3-modal-content" style="padding:32px">
+            <div class="w3-container w3-white">
+                <i class="fas fa-remove w3-xlarge w3-button w3-transparent w3-right w3-xlarge"></i>
+                <h2 class="w3-wide">VickChat</h2>
+                <p>Enter the shared video chat information to join a video meeting</p>
+                <p><input type="text" id="username" class="w3-input w3-border" placeholder="Enter Username..."></p>
+                <p><input type="text" id="channelName" class="w3-input w3-border" placeholder="Enter Channel Name"></p>
+                <button type="button" class="w3-button w3-block w3-green w3-margin-bottom" onclick="document.getElementById('videoCall').style.display='none'; saveToLocalStorage()">
+                    Join Call
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER WITH OUR INFORMATION-->
+
+    <!--SCRIPT-->
+    <script src="https://kit.fontawesome.com/fc64b1da36.js" crossorigin="anonymous"></script>
+    <script src="script/main.js"></script>
 </body>
 </html>
