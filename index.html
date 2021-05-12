@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
     <link rel="stylesheet" href="style/w3.css">
-    <link rel="stylesheet" href="style/call.css">
     <link rel="stylesheet" href="style/main.css">
     <title>VickChat</title>
 </head>
@@ -68,7 +67,7 @@
     <div id="videoCall" class="w3-modal w3-animate-opacity">
         <div class="w3-modal-content" style="padding:32px">
             <div class="w3-container w3-white">
-                <i class="fas fa-remove w3-xlarge w3-button w3-transparent w3-right w3-xlarge"></i>
+                <i class="fas fa-times w3-xlarge w3-button w3-transparent w3-right w3-xlarge" onclick="document.getElementById('videoCall').style.display='none'"></i>
                 <h2 class="w3-wide">VickChat</h2>
                 <p>Enter the shared video chat information to join a video meeting</p>
                 <p><input type="text" id="username" class="w3-input w3-border" placeholder="Enter Username..."></p>
@@ -81,6 +80,17 @@
     </div>
 
     <!-- FOOTER WITH OUR INFORMATION-->
+    <footer class="w3-container w3-padding-32 w3-light-grey w3-center w3-xlarge">
+        <div class="w3-section">
+            <a href=""><i class="fab fa-facebook"></i></a>
+            <a href=""><i class="fab fa-instagram"></i></a>
+            <a href=""><i class="fab fa-github"></i></a>
+            <a href=""><i class="fab fa-twitter"></i></a>
+        </div>
+        <p class="w3-medium">
+            All rights reserved &copy; 2020 Created by <a href="https://victoromondi1997">victor Omondi</a>
+        </p>
+    </footer>
 
     <!--SCRIPT-->
     <script src="https://kit.fontawesome.com/fc64b1da36.js" crossorigin="anonymous"></script>
