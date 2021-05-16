@@ -1,32 +1,3 @@
-/**
- * @name handleFail
- * @param err - error thrown by any function
- * @description Helper function to handle errors
- */
-
-let handleFail = function(err){
-    console.log("Error: ", err)
-}
-
-// Queries the container in which the remote feeds belong
-let remoteContainer = document.getElementById("remote-container");
-var count = 0; // number of remote containers
-
-// Reads value from a variable named `channelName` in our local storage
-var channelName = localStorage.getItem('channelName');
-
-// <---IMPORTANT VIDEO CALL CODES---->
-document.getElementById('disconnect_call').onclick = () => {
-    disconnectCall();
-}
-
-function disconnectCall(){
-    client.leave();
-    if(client.leave){
-        window.location.href = '../index.html'
-    }
-}
-
 var slideIndex = 1;
 showSlide(slideIndex);
 
