@@ -1,0 +1,23 @@
+#me{
+    display: block;
+    grid-template-columns: 250px 1fr;
+    grid-template-rows: 150px 1fr;
+    width: 90vw;
+    height: 35vw;
+    margin: 0vw 5vw;
+    border: 5px dotted black;
+}
+
+#remote-container{
+    display: block;
+    height: 9vw;
+    width: 12vw;
+    position: absolute;
+    right: 7%;
+    top: 5vw;
+    border: 2px solid red;
+}
+
+img{
+    height: 2.5rem;
+}
