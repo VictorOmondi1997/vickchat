@@ -45,6 +45,51 @@ function toggleMic(){
     }
 }
 
+document.getElementById('disable_camera').onclick = () => {
+    toggleMic();
+}
+
+var isCameraOn = true;
+
+function toggleCamera(){
+    if(isCameraOn){
+        isCameraOn=false;
+        globalstream.muteVideo();
+        console.log('Video has been disabled');
+    } else {
+        isCameraOn = true;
+        globalstream.enableVideo();
+        console.log('Video has been enabled')
+    }
+}
+
+/**
+ * @name addVideoStream
+ * @param streamId 
+ * @desctription Helper function to add the video to "remote-container"
+ */
+function addVideoStream(streamId){
+    count = count+1;
+    let streamDiv = document.createElement('div');  // Create a new div for every stream
+    streamDiv.id = streamId;                        // Assigning id to dov
+    streamDiv.style.transform='rotateY(180deg)';    // Takes care of lateral inversion (mirror image)
+    streamDiv.style.marginBottom = "3vw";           // Creates some space between the remote container
+    remoteContainer.appendChild(streamDiv);         // Add new div to container
+ }
+
+ /**
+  * @name removeVideoStream
+  * @param evt - Remove event
+  * @description Helper function to remove the video stream from "remote-container"
+  */
+ function removeVideoStream(evt){
+     let stream = evt.stream;
+     stream.stop();
+     let remDiv = document.getElementById('remote-container');
+     remDiv.parentNode.removeChild(remDiv);
+     console.log('Remote stream removed');
+ }
+
 // start code
 //creating client
 let client = AgoraRTC.createClient({
@@ -52,7 +97,44 @@ let client = AgoraRTC.createClient({
     codec:"h264"
 });
 
+var stream = AgoraRTC.createStream({
+    streamID:0,
+    audio:true,
+    video:true,
+    screen:false
+});
+
 //intializing client
 client.init("dc96e5c14025414ea38980c9b1b1fbe4", function(){
     console.log("Initialized successfully")
 });
+
+//joining the client
+client.join(null, channelName, null, function(uid){
+    let localstream = AgoraRTC.createStream({
+        streamID, uid,
+        audio:true,
+        video:true,
+        screen:false
+    });
+
+    globalstream = localstream;
+
+    //publishing the stream
+    localstream.init(function(){
+        localstream.play('me');
+        client.publish(localstream, handleFail);
+
+        client.on('stream-added', (evt)=>{
+            client.subscribe(evt.stream, handleFail);
+        });
+
+        client.on('stream-sbuscribed', (evt)=>{
+            let stream = evt.stream;
+            addVideoStream(stream.getId());
+            stream.play('remote-container');
+        });
+        client.on('stream-removed', removeVideoStream);
+    }, handleFail);
+}, handleFail);
+
