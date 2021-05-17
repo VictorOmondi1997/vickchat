@@ -5,8 +5,8 @@
  */
 
  let handleFail = function(err){
-    console.log("Error: ", err)
-}
+    console.log("Error: ", err);
+};
 
 // Queries the container in which the remote feeds belong
 let remoteContainer = document.getElementById("remote-container");
@@ -37,16 +37,16 @@ function toggleMic(){
     if(isMuted){
         isMuted = false;
         globalstream.muteAudio();
-        console.log('Streem has been mutted')
+        console.log('Streem has been mutted');
     } else {
         isMuted = true;
         globalstream.enableAudio();
-        console.log("Stream has been unmuted")
+        console.log("Stream has been unmuted");
     }
 }
 
 document.getElementById('disable_camera').onclick = () => {
-    toggleMic();
+    toggleCamera();
 }
 
 var isCameraOn = true;
@@ -106,7 +106,7 @@ var stream = AgoraRTC.createStream({
 
 //intializing client
 client.init("dc96e5c14025414ea38980c9b1b1fbe4", function(){
-    console.log("Initialized successfully")
+    console.log("Initialized successfully!")
 });
 
 //joining the client
@@ -129,7 +129,7 @@ client.join(null, channelName, null, function(uid){
             client.subscribe(evt.stream, handleFail);
         });
 
-        client.on('stream-sbuscribed', (evt)=>{
+        client.on('stream-subscribed', (evt)=>{
             let stream = evt.stream;
             addVideoStream(stream.getId());
             stream.play('remote-container');
