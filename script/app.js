@@ -112,7 +112,7 @@ client.init("dc96e5c14025414ea38980c9b1b1fbe4", function(){
 //joining the client
 client.join(null, channelName, null, function(uid){
     let localstream = AgoraRTC.createStream({
-        streamID, uid,
+        streamID:uid,
         audio:true,
         video:true,
         screen:false
